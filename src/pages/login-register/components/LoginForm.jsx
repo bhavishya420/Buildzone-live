@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
 import Icon from '../../../components/AppIcon';
+import { useAuth } from '../../../contexts/AuthContext'; // ✅ import AuthContext
 
 const LoginForm = ({ onSwitchToRegister }) => {
   const navigate = useNavigate();
+  const { signIn } = useAuth(); // ✅ get signIn from context
   const [formData, setFormData] = useState({
     emailOrMobile: '',
     password: ''
@@ -70,8 +72,8 @@ const LoginForm = ({ onSwitchToRegister }) => {
         formData?.password === mockCredentials?.password;
 
       if (isValidCredentials) {
-        // Store user session
-        localStorage.setItem('buildzone_user', JSON.stringify({
+        // Create user object
+        const userObj = {
           id: 'user_001',
           name: 'Rajesh Kumar',
           email: 'retailer@buildzone.com',
@@ -79,8 +81,15 @@ const LoginForm = ({ onSwitchToRegister }) => {
           businessName: 'Kumar Building Materials',
           gstNumber: '27ABCDE1234F1Z5',
           loginTime: new Date()?.toISOString()
-        }));
+        };
 
+        // Store user session locally
+        localStorage.setItem('buildzone_user', JSON.stringify(userObj));
+
+        // ✅ update AuthContext too
+        signIn(userObj);
+
+        // Redirect
         navigate('/home-dashboard');
       } else {
         setErrors({
