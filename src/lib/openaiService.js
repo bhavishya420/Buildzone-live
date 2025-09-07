@@ -1,5 +1,8 @@
 // src/lib/openaiService.js
-export const askAI = async (prompt) => {
-  console.log("AI service called with:", prompt);
-  return { text: "⚡ Demo AI response (mocked, no OpenAI API key required)" };
-};
+// 🚫 Disabled real OpenAI API calls for demo
+// ✅ This prevents "Missing credentials" error on Vercel
+
+export async function askAI(prompt) {
+  console.log("Mock OpenAI called with:", prompt);
+  return "🤖 Demo response (no real API call)";
+}
