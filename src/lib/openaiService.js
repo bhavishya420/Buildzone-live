@@ -1,8 +1,7 @@
 // src/lib/openaiService.js
-// 🚫 Disabled real OpenAI API calls for demo
-// ✅ This prevents "Missing credentials" error on Vercel
+// ✅ FINAL MOCK - No API key needed, no errors in Vercel
 
 export async function askAI(prompt) {
-  console.log("Mock OpenAI called with:", prompt);
-  return "🤖 Demo response (no real API call)";
+  console.log("Mock AI called with:", prompt);
+  return "🤖 Buildzone demo: AI feature mocked (no API key needed)";
 }
