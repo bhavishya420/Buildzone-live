@@ -7,11 +7,8 @@ pnpm-debug.log*
 
 # Environment files
 .env
-.env.*
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
 
 # Build outputs
 /dist
@@ -25,11 +22,9 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Coverage reports
 coverage/
 *.lcov
-
-# NYC test coverage
 .nyc_output
 
 # Logs
@@ -45,7 +40,7 @@ logs/
 ehthumbs.db
 Thumbs.db
 
-# IDE files
+# IDE/editor
 .vscode/
 .idea/
 *.swp
@@ -53,16 +48,9 @@ Thumbs.db
 *~
 
 # Deployment
-.vercel
 .vercel/
-
-# Supabase
 .supabase/
 
 # Temporary files
 *.tmp
 *.temp
-
-# Lock files (optional - comment out if you want to include them)
-# package-lock.json
-# yarn.lock
