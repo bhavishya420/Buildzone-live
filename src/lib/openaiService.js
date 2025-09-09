@@ -19,9 +19,12 @@ export async function enhanceSearchQuery(query) {
         messages: [
           {
             role: "system",
-            content: `You are a construction materials search assistant. Extract key product terms from user queries.
-            Focus on: material types (PVC, cement, steel, etc.), measurements, quantities, and specifications.
-            Return only the most relevant search terms separated by spaces. Keep it concise.`,
+            content: `You are a construction materials search assistant. 
+            Extract key product terms from user queries.
+            Focus on: material types (PVC, cement, steel, etc.), 
+            measurements, quantities, and specifications.
+            Return only the most relevant search terms separated by spaces. 
+            Keep it concise.`,
           },
           { role: "user", content: query },
         ],
@@ -42,7 +45,7 @@ export async function enhanceSearchQuery(query) {
 }
 
 /**
- * Transcribe audio (calls backend API that uses Whisper)
+ * Transcribe audio (calls backend API that uses Whisper via /api/openai)
  * @param {Blob} audioBlob
  * @param {string} language
  * @returns {Promise<string>}
@@ -61,7 +64,7 @@ export async function transcribeAudio(audioBlob, language = "auto") {
     if (!res.ok) throw new Error(`API error: ${res.statusText}`);
 
     const data = await res.json();
-    return data.text || "";
+    return data?.text || "";
   } catch (err) {
     console.error("Error transcribing audio:", err);
     return "";
